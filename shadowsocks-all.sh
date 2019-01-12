@@ -404,8 +404,8 @@ error_detect_depends(){
     ${command} > /dev/null 2>&1
     if [ $? -ne 0 ]; then
         echo -e "[${red}Error${plain}] Failed to install ${red}${depend}${plain}"
-        echo "Please visit: https://teddysun.com/486.html and contact."
-        exit 1
+        # echo "Please visit: https://teddysun.com/486.html and contact."
+        # exit 1
     fi
 }
 
