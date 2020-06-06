@@ -11,7 +11,7 @@ red(){
     echo -e "\033[31m\033[01m$1\033[0m"
 }
 
-#copy from 秋水逸冰 ss scripts
+#copy from qsyb ss scripts
 if [[ -f /etc/redhat-release ]]; then
     release="centos"
     systemPackage="yum"
@@ -46,28 +46,28 @@ function install_trojan(){
 CHECK=$(grep SELINUX= /etc/selinux/config | grep -v "#")
 if [ "$CHECK" == "SELINUX=enforcing" ]; then
     red "======================================================================="
-    red "检测到SELinux为开启状态，为防止申请证书失败，请先重启VPS后，再执行本脚本"
+    red "detect SELinux is Enabled，please reboot VPS first"
     red "======================================================================="
-    read -p "是否现在重启 ?请输入 [Y/n] :" yn
+    read -p "Reboot now ?Please input [Y/n] :" yn
 	[ -z "${yn}" ] && yn="y"
 	if [[ $yn == [Yy] ]]; then
 	    sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
             setenforce 0
-	    echo -e "VPS 重启中..."
+	    echo -e "VPS rebooting..."
 	    reboot
 	fi
     exit
 fi
 if [ "$CHECK" == "SELINUX=permissive" ]; then
     red "======================================================================="
-    red "检测到SELinux为宽容状态，为防止申请证书失败，请先重启VPS后，再执行本脚本"
+    red "detect SELinux is in permissive status，please reboot VPS first"
     red "======================================================================="
-    read -p "是否现在重启 ?请输入 [Y/n] :" yn
+    read -p "reboot now? please input [Y/n] :" yn
 	[ -z "${yn}" ] && yn="y"
 	if [[ $yn == [Yy] ]]; then
 	    sed -i 's/SELINUX=permissive/SELINUX=disabled/g' /etc/selinux/config
             setenforce 0
-	    echo -e "VPS 重启中..."
+	    echo -e "VPS rebooting..."
 	    reboot
 	fi
     exit
@@ -75,13 +75,13 @@ fi
 if [ "$release" == "centos" ]; then
     if  [ -n "$(grep ' 6\.' /etc/redhat-release)" ] ;then
     red "==============="
-    red "当前系统不受支持"
+    red "current OS is not supportted"
     red "==============="
     exit
     fi
     if  [ -n "$(grep ' 5\.' /etc/redhat-release)" ] ;then
     red "==============="
-    red "当前系统不受支持"
+    red "current OS is not supportted"
     red "==============="
     exit
     fi
@@ -91,13 +91,13 @@ if [ "$release" == "centos" ]; then
 elif [ "$release" == "ubuntu" ]; then
     if  [ -n "$(grep ' 14\.' /etc/os-release)" ] ;then
     red "==============="
-    red "当前系统不受支持"
+    red "current OS is not supportted"
     red "==============="
     exit
     fi
     if  [ -n "$(grep ' 12\.' /etc/os-release)" ] ;then
     red "==============="
-    red "当前系统不受支持"
+    red "current OS is not supportted"
     red "==============="
     exit
     fi
