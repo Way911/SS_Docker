@@ -26,6 +26,28 @@ net.ipv4.tcp_syncookies = 1
 ```shell
 sysctl -p
 ```
+mkdir & generate keys
+```shell
+mkdir /etc/wireguard && cd /etc/wireguard
+bash -c 'umask 077; touch wg0.conf'
+wg genkey | tee server_privatekey | wg pubkey > publickey
+cat publickey
+cat server_privatekey
+```
+config virtual network interface
+```shell
+vim /etc/wireguard/wg0.conf 
+```
+add
+```
+[Interface]
+Address = 192.168.2.1/24    #address of virtual network interface
+DNS = 8.8.8.8
+MTU = 1420
+ListenPort = 57000
+SaveConfig = true
+PrivateKey = GBu3qlu1ZbPVF4UZIVh9EmtVp7dB5Pe8gFvubg99H08=   #replace it with server private key
+```
 
 check listner port
 
