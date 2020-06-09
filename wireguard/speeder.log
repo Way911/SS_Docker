@@ -1,0 +1,12 @@
+[32m[2020-06-10 01:41:01][INFO]argc=10 [0m[32m./speederv2 [0m[32m-c [0m[32m-l0.0.0.0:9898 [0m[32m-r168.63.212.242:9999 [0m[32m-k [0m[32myour_password [0m[32m--mode [0m[32m0 [0m[32m-f2:4 [0m[32m-q1 [0m[32m
+[0m[32m[2020-06-10 01:41:01][INFO]parsing address: 0.0.0.0:9898
+[0m[32m[2020-06-10 01:41:01][INFO]its an ipv4 adress
+[0m[32m[2020-06-10 01:41:01][INFO]ip_address is {0.0.0.0}, port is {9898}
+[0m[32m[2020-06-10 01:41:01][INFO]parsing address: 168.63.212.242:9999
+[0m[32m[2020-06-10 01:41:01][INFO]its an ipv4 adress
+[0m[32m[2020-06-10 01:41:01][INFO]ip_address is {168.63.212.242}, port is {9999}
+[0m[32m[2020-06-10 01:41:01][INFO]jitter_min=0 jitter_max=0 output_interval_min=0 output_interval_max=0 fec_timeout=8 fec_mtu=1250 fec_queue_len=1 fec_mode=0
+[0m[32m[2020-06-10 01:41:01][INFO]fec_str=2:4
+[0m[32m[2020-06-10 01:41:01][INFO]fec_inner_parameter=1:4,2:4
+[0m[31m[2020-06-10 01:41:01][FATAL]socket bind error
+[0m[0m
