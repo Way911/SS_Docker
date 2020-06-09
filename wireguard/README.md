@@ -44,9 +44,15 @@ add
 Address = 192.168.2.1/24    #address of virtual network interface
 DNS = 8.8.8.8
 MTU = 1420
-ListenPort = 57000
+ListenPort = 53517
 SaveConfig = true
 PrivateKey = GBu3qlu1ZbPVF4UZIVh9EmtVp7dB5Pe8gFvubg99H08=   #replace it with server private key
+```
+
+enable service
+```shell
+systemctl enable wg-quick@wg0.service
+systemctl restart wg-quick@wg0.service
 ```
 
 check listner port
