@@ -44,7 +44,7 @@ add
 Address = 10.0.0.1/24  # This is the virtual IP address, with the subnet mask we will use for the VPN
 PostUp   = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
-ListenPort = 51820
+ListenPort = 53517
 PrivateKey = [SERVER PRIVATE KEY]
 
 [Peer]
@@ -62,7 +62,7 @@ DNS = 10.0.0.1
 [Peer]
 PublicKey = [SERVER PUBLICKEY]
 AllowedIPs = 0.0.0.0/0, ::0/0
-Endpoint = [SERVER ENDPOINT]:51820
+Endpoint = [SERVER ENDPOINT]:53517
 PersistentKeepalive = 25
 ```
 
