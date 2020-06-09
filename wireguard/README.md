@@ -77,6 +77,10 @@ check listner port
 ```shell
 wg
 ```
+使用 `wg-quick up wg0` 来启用 Interface, 使用 `wg-quick down wg0` 来关闭。
+
+使用 `systemctl enable wg-quick@wg0` 来自动启动。
+
 
 # Step 2. On remote server. Run speederv2 server side.
 ```shell
