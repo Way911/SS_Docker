@@ -41,12 +41,29 @@ vim /etc/wireguard/wg0.conf
 add
 ```
 [Interface]
-Address = 192.168.2.1/24    #address of virtual network interface
-DNS = 8.8.8.8
-MTU = 1420
-ListenPort = 53517
-SaveConfig = true
-PrivateKey = GBu3qlu1ZbPVF4UZIVh9EmtVp7dB5Pe8gFvubg99H08=   #replace it with server private key
+Address = 10.0.0.1/24  # This is the virtual IP address, with the subnet mask we will use for the VPN
+PostUp   = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
+ListenPort = 51820
+PrivateKey = [SERVER PRIVATE KEY]
+
+[Peer]
+PublicKey = [CLIENT PUBLIC KEY]
+AllowedIPs = 10.0.0.2/32  # 这表示客户端只有一个 ip。
+```
+
+client config
+```
+[Interface]
+Address = 10.0.0.2/24  # The client IP from wg0server.conf with the same subnet mask
+PrivateKey = [CLIENT PRIVATE KEY]
+DNS = 10.0.0.1
+
+[Peer]
+PublicKey = [SERVER PUBLICKEY]
+AllowedIPs = 0.0.0.0/0, ::0/0
+Endpoint = [SERVER ENDPOINT]:51820
+PersistentKeepalive = 25
 ```
 
 enable service
