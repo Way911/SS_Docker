@@ -1,7 +1,30 @@
-# Step 1. Execute scripts below on remote VPS.
+# Step 1. Execute scripts below on remote VPS CentOS 8 recommeded
 
 ```shell
-./wireguard_install.sh
+dnf install -y epel-release
+dnf config-manager --set-enabled PowerTools
+dnf copr enable jdoss/wireguard -y
+dnf install -y wireguard-dkms wireguard-tools
+dnf install -y dnf-automatic
+sed -i 's/apply_updates = no/apply_updates = yes/' /etc/dnf/automatic.conf
+systemctl enable --now dnf-automatic.timer
+```
+
+
+```shell
+vim /etc/sysctl.conf
+```
+add content below:
+```
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = bbr
+net.ipv4.conf.default.rp_filter = 1
+net.ipv4.conf.all.rp_filter = 1
+net.ipv4.ip_forward = 1
+net.ipv4.tcp_syncookies = 1
+```
+```shell
+sysctl -p
 ```
 
 check listner port
