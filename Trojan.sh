@@ -155,7 +155,7 @@ EOF
 	#applying https certification
 	mkdir /usr/src/trojan-cert
 	curl https://get.acme.sh | sh
-	~/.acme.sh/acme.sh  --issue  -d $your_domain  --webroot /usr/share/nginx/html/
+	~/.acme.sh/acme.sh  --issue  -d $your_domain  --webroot /usr/share/nginx/html/ --register-account -m my@example.com
     	~/.acme.sh/acme.sh  --installcert  -d  $your_domain   \
         --key-file   /usr/src/trojan-cert/private.key \
         --fullchain-file /usr/src/trojan-cert/fullchain.cer \
