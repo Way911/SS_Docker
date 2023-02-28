@@ -3,3 +3,4 @@
 curl -fsSL https://github.com/arzyu/shadowsocks/raw/master/setup.sh | bash
 docker logs -f shadowsocks
 ```
+aes-256-gcm
